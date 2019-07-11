@@ -38,4 +38,23 @@ describe('route tests', () => {
         });
       });
   });
+
+  it('can update an item with PUT', () => {
+    const newFart = {
+      type: 'bark-fart',
+      description: 'a loud fart that is jarring in sound, but does not smell',
+      deadly: false
+    };
+
+    return request(app)
+      .put('/api/v1/farts/0')
+      .send(newFart)
+      .then(res => {
+        expect(res.body).toEqual({
+          type: 'bark-fart',
+          description: 'a loud fart that is jarring in sound, but does not smell',
+          deadly: false
+        });
+      });
+  });
 });
