@@ -26,4 +26,16 @@ describe('route tests', () => {
         }]);
       });
   });
+
+  it('can get an item by index', () => {
+    return request(app)
+      .get('/api/v1/farts/0')
+      .then(res => {
+        expect(res.body).toEqual({ 
+          type: 'wet-fart', 
+          description: 'wet sound that can lead to seepage', 
+          deadly: true 
+        });
+      });
+  });
 });
