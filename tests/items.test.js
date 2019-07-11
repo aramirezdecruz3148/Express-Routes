@@ -57,4 +57,16 @@ describe('route tests', () => {
         });
       });
   });
+
+  it('can delete an item by index', () => {
+    return request(app)
+      .delete('/api/v1/farts/0')
+      .then(res => {
+        expect(res.body).toEqual({
+          type: 'bark-fart',
+          description: 'a loud fart that is jarring in sound, but does not smell',
+          deadly: false
+        });
+      });
+  });
 });
