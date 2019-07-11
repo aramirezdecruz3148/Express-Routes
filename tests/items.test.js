@@ -13,6 +13,17 @@ describe('route tests', () => {
           deadly: true 
         });
       });
+  });
 
+  it('can get an array of items with GET', () => {
+    return request(app)
+      .get('/api/v1/farts')
+      .then(res => {
+        expect(res.body).toEqual([{ 
+          type: 'wet-fart', 
+          description: 'wet sound that can lead to seepage', 
+          deadly: true 
+        }]);
+      });
   });
 });
